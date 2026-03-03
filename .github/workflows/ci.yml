@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and Push Go Services
         run: |
-          for dir in services/go-gateway-*; do
+          for dir in microservices/go-gateway-*; do
             service=$(basename $dir)
             docker build -t $service $dir
             docker tag $service:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/go-services:$service
@@ -44,7 +44,7 @@ jobs:
 
       - name: Build and Push Node Services
         run: |
-          for dir in services/node-api-*; do
+          for dir in microservices/node-api-*; do
             service=$(basename $dir)
             docker build -t $service $dir
             docker tag $service:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/node-services:$service
@@ -57,7 +57,7 @@ jobs:
 
       - name: Build and Push Python Services
         run: |
-          for dir in services/python-worker-*; do
+          for dir in microservices/python-worker-*; do
             service=$(basename $dir)
             docker build -t $service $dir
             docker tag $service:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/python-services:$service
